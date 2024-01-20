@@ -13,12 +13,12 @@ public class PasswordService {
 		Encoder encoder = Base64.getEncoder();
 		byte[] passBytes = encoder.encode(password.getBytes());
 		String encodedPwd=new String(passBytes);
-		/*System.out.println("Encoded password : "+encodedPwd);
+		System.out.println("Plain Password : "+password+"   ---   Encoded password : "+encodedPwd);
 		
 		Decoder decoder = Base64.getDecoder();
 		byte[] decode = decoder.decode(encodedPwd.getBytes());
 		String decodedPwd=new String(decode);
-		System.out.println("Decoded password : "+decodedPwd);*/
+		System.out.println("Encoded password : "+encodedPwd+"   ---   Decoded password : "+decodedPwd);
 		
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
 		byte[] digest = md.digest(password.getBytes());
@@ -29,6 +29,10 @@ public class PasswordService {
 		byte[] encode = encoder.encode(str.getBytes());
 		String encodedAndEncPwd=new String(encode);
 		System.out.println("Encrypted+EncodedPwd : "+encodedAndEncPwd);
+		
+		byte[] decode2 = decoder.decode(encodedAndEncPwd);
+		String decString=new String(decode2);
+		System.out.println(decString);
 		
 	}
 
